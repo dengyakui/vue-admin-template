@@ -11,8 +11,11 @@
     <el-table
     ref="singleTable"
     max-height="350"
-    style="width:100%"
     border
+    v-loading="loading"
+    element-loading-text="拼命加载中"
+    element-loading-spinner="el-icon-loading"
+    element-loading-background="rgba(0, 0, 0, 0.8)"
     highlight-current-row
     :data="tableData"
     :row-class-name="tableRowClassName">
@@ -75,6 +78,17 @@
         <el-button round>append</el-button>
       </div>
   </el-table>
+  <p>{{currentPage}}</p>
+  <el-pagination 
+    :total="500"
+    :page-sizes="[100, 200, 300, 400]"
+    :page-size="10"
+    :current-page.sync="currentPage"
+    @size-change="handleSizeChange"
+    @current-change="handleCurrentChange"
+    small
+    background
+    layout="total,sizes,prev,pager,next,jumper"></el-pagination>
   </el-row>
 
   </el-container>
@@ -83,7 +97,18 @@
 <script>
 
 export default {
+  mounted() {
+    setTimeout(() => {
+      this.loading = false
+    }, 3000)
+  },
   methods: {
+    handleSizeChange(val) {
+      console.log(`每页${val}条`)
+    },
+    handleCurrentChange(val) {
+      console.log(val)
+    },
     handleClick(scope) {
       alert(`点击了第${scope.$index + 1}行,\n当前行的数据为日期:${scope.row.date},名称:${scope.row.name},地址:${scope.row.address}`)
     },
@@ -111,6 +136,8 @@ export default {
   },
   data() {
     return {
+      loading: true,
+      currentPage: 3,
       width: 300,
       tableData: [{
         date: '2016-05-03',
