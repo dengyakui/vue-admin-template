@@ -1,3 +1,8 @@
+# command to start localmock service
+```
+docker run -d -p 8888:80 --name mock-service mock-service
+```
+
 # vueAdmin-template
 
 > A minimal vue admin template with Element UI & axios & iconfont & permission control & lint
