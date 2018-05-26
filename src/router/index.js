@@ -122,6 +122,36 @@ export const constantRouterMap = [
         name: 'table',
         component: () => import('@/views/helloworld/table'),
         meta: { title: 'table', icon: 'form' }
+      },
+      {
+        path: 'cascader',
+        name: 'cascader',
+        component: () => import('@/views/helloworld/cascader'),
+        meta: { title: 'cascader', icon: 'form' }
+      },
+      {
+        path: 'switch',
+        name: 'switch',
+        component: () => import('@/views/helloworld/switch'),
+        meta: { title: 'switch', icon: 'form' }
+      },
+      {
+        path: 'slider',
+        name: 'slider',
+        component: () => import('@/views/helloworld/slider'),
+        meta: { title: 'slider', icon: 'form' }
+      },
+      {
+        path: 'timepicker',
+        name: 'timepicker',
+        component: () => import('@/views/helloworld/timepicker'),
+        meta: { title: 'timepicker', icon: 'form' }
+      },
+      {
+        path: 'tree',
+        name: 'tree',
+        component: () => import('@/views/helloworld/tree'),
+        meta: { title: 'tree', icon: 'form' }
       }
     ]
   },
