@@ -152,6 +152,18 @@ export const constantRouterMap = [
         name: 'tree',
         component: () => import('@/views/helloworld/tree'),
         meta: { title: 'tree', icon: 'form' }
+      },
+      {
+        path: 'loading',
+        name: 'loading',
+        component: () => import('@/views/helloworld/loading'),
+        meta: { title: 'loading', icon: 'form' }
+      },
+      {
+        path: 'message',
+        name: 'message',
+        component: () => import('@/views/helloworld/message'),
+        meta: { title: 'message', icon: 'form' }
       }
     ]
   },
