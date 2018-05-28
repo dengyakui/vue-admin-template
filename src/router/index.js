@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
 // in development-env not use lazy-loading, because lazy-loading too many pages will cause webpack hot update too slow. so only in production use lazy-loading;
 // detail: https://panjiachen.github.io/vue-element-admin-site/#/lazy-loading
 
@@ -164,6 +163,30 @@ export const constantRouterMap = [
         name: 'message',
         component: () => import('@/views/helloworld/message'),
         meta: { title: 'message', icon: 'form' }
+      },
+      {
+        path: 'messagebox',
+        name: 'messagebox',
+        component: () => import('@/views/helloworld/messagebox'),
+        meta: { title: 'messagebox', icon: 'form' }
+      },
+      {
+        path: 'menu',
+        name: 'menu',
+        component: () => import('@/views/helloworld/menu'),
+        meta: { title: 'menu', icon: 'form' }
+      },
+      {
+        path: 'inlineEditTable',
+        name: 'inlineEditTable',
+        component: () => import('@/views/helloworld/inlineEditTable'),
+        meta: { title: 'inlineEditTable', icon: 'form' }
+      },
+      {
+        path: 'complexTable',
+        name: 'complexTable',
+        component: () => import('@/views/helloworld/complexTable'),
+        meta: { title: 'complexTable', icon: 'form' }
       }
     ]
   },
