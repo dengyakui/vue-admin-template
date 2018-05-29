@@ -73,6 +73,7 @@ export const constantRouterMap = [
   {
     path: '/helloworld',
     component: Layout,
+    meta: { title: 'Form', icon: 'form' },
     children: [
       {
         path: 'index',
@@ -177,6 +178,12 @@ export const constantRouterMap = [
         meta: { title: 'menu', icon: 'form' }
       },
       {
+        path: 'dialog',
+        name: 'dialog',
+        component: () => import('@/views/helloworld/dialog'),
+        meta: { title: 'dialog', icon: 'form' }
+      },
+      {
         path: 'inlineEditTable',
         name: 'inlineEditTable',
         component: () => import('@/views/helloworld/inlineEditTable'),
@@ -187,6 +194,24 @@ export const constantRouterMap = [
         name: 'complexTable',
         component: () => import('@/views/helloworld/complexTable'),
         meta: { title: 'complexTable', icon: 'form' }
+      },
+      {
+        path: 'form',
+        name: 'form',
+        component: () => import('@/views/helloworld/form'),
+        meta: { title: 'form', icon: 'form' }
+      },
+      {
+        path: 'notification',
+        name: 'notification',
+        component: () => import('@/views/helloworld/notification'),
+        meta: { title: 'notification', icon: 'form' }
+      },
+      {
+        path: 'tab',
+        name: 'tab',
+        component: () => import('@/views/helloworld/tab'),
+        meta: { title: 'tab', icon: 'form' }
       }
     ]
   },

@@ -1,13 +1,21 @@
 <template>
   <div class="app-container calendar-list-container">
     <div class="filter-container">
-      <el-input placeholder="标题" @keyup.enter.native="handleFilter" v-model="listQuery.title"></el-input>
+      <el-input placeholder="标题" @keyup.enter.native="handleFilter" v-model="listQuery.title" style="width:200px;"></el-input>
       <el-select v-model="listQuery.importance"
        clearable
-       placeholder="重要性"
-        >
+       placeholder="重要性">
         <el-option v-for="item in importanceOptions" :key="item" :label="item" :value="item"></el-option>
       </el-select>
+      <el-select v-model="listQuery.type"
+        clearable
+        placeholder="type">
+        <el-option v-for="item in calendarTypeOptions" :key="item.key" :label="item.display_name" :value="item.key"></el-option>
+      </el-select>
+      <!-- 搜索按钮 -->
+      <el-button class='el-icon-search' type="primary" @click.native="handleFilter">搜索</el-button>
+      <!-- 添加按钮 -->
+      <el-button class="el-icon-edit" type="primary">添加</el-button>
     </div>
     <el-table :data="list"
     v-loading="listLoading"
@@ -25,6 +33,7 @@
           <span>{{scope.row.title}}</span>
         </template>
       </el-table-column>
+      <el-table-column prop="type" label="type"></el-table-column>
        <el-table-column label="重要性">
         <template slot-scope="scope">
           {{scope.row.importance}}
@@ -68,16 +77,27 @@
 
 <script>
 import { fetchList } from '@/api/article'
+const calendarTypeOptions = [
+  { key: 'CN', display_name: 'China' },
+  { key: 'US', display_name: 'USA' },
+  { key: 'JP', display_name: 'Japan' },
+  { key: 'EU', display_name: 'Eurozone' }
+]
+
+const types = calendarTypeOptions.reduce((prev, cur) => { prev[cur.key] = cur.display_name; return prev })
+
 export default {
   name: 'complexTable',
   data() {
     return {
       importanceOptions: [1, 2, 3],
+      calendarTypeOptions,
       listQuery: {
         importance: undefined,
         page: 1,
         limit: 20,
-        title: ''
+        title: '',
+        type: ''
       },
       total: 0,
       list: null,
@@ -118,8 +138,12 @@ export default {
         deleted: 'danger'
       }
       return statusMap[status]
+    },
+    typeFileter(t) {
+      return types[t]
     }
   }
+
 }
 </script>
 
