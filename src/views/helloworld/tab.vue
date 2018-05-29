@@ -1,6 +1,7 @@
 <template>
   <el-tabs 
    editable 
+   @edit="handleEdit"
    type="border-card"
    v-model="activeName" 
    tab-position="left"
@@ -32,6 +33,9 @@ export default {
   methods: {
     handleClick(tab, event) {
       console.log(tab, event)
+    },
+    handleEdit(targetName, action) {
+
     }
   }
 }
